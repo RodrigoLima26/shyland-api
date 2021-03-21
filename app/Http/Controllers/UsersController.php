@@ -153,7 +153,7 @@ class UsersController extends Controller {
         }
         else {
 
-            $player = new PLayer();
+            $player = new Player();
             $player->store([
                 'username' => $OAuthUser->name
             ]);
@@ -214,5 +214,35 @@ class UsersController extends Controller {
 
             return response(['user' => $user], 200);
         }
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function changePassword(Request $request) {
+
+        $user = User::where('api_token', $request->api_token)->first();
+
+        $user->password = md5($request->password);
+
+        $user->save();
+
+        return response(['user' => $user], 200);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function updateUser(Request $request) {
+
+        $user = User::where('api_token', $request->api_token)->first();
+
+        $data = $request->all();
+
+        $user->player->store($data['player']);
+
+        return response(['user' => $user], 200);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,5 +27,21 @@ class PlayerMission extends Model
 
         $this->save();
 
+    }
+
+    /**
+     *
+     */
+    public function abandon() {
+        $this->abandoned_at = Carbon::now()->format('Y-m-d H:s:i');
+        $this->save();
+    }
+
+    /**
+     *
+     */
+    public function complete() {
+        $this->completed_at = Carbon::now()->format('Y-m-d H:s:i');
+        $this->save();
     }
 }

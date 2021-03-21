@@ -37,8 +37,24 @@ class Status extends Model {
      * @return bool
      */
     public function changeStatus($status, $quantity) {
-        $aux = $this->statusList();
-        $aux[$status] = $aux[$status] + $quantity;
+
+        if($status == 'courage')
+            $this->courage = $this->courage + $quantity;
+
+        if($status == 'friendship')
+            $this->friendship = $this->friendship + $quantity;
+
+        if($status == 'sociability')
+            $this->sociability = $this->sociability + $quantity;
+
+        if($status == 'kindness')
+            $this->kindness = $this->kindness + $quantity;
+
+        if($status == 'criativity')
+            $this->criativity = $this->criativity + $quantity;
+
+        if($status == 'intelligence')
+            $this->intelligence = $this->intelligence + $quantity;
 
         return $this->save();
     }
@@ -50,12 +66,11 @@ class Status extends Model {
     public function changeAllStatus($quantity) {
 
         $this->courage = $this->courage + $quantity;
-        $this->inteligence = $this->inteligence + $quantity;
         $this->friendship = $this->friendship + $quantity;
         $this->sociability = $this->sociability + $quantity;
         $this->kindness = $this->kindness + $quantity;
         $this->criativity = $this->criativity + $quantity;
-        $this->intelligence = $this->intelligenc + $quantity;
+        $this->intelligence = $this->intelligence + $quantity;
 
         return $this->save();
     }
@@ -66,7 +81,6 @@ class Status extends Model {
     public function statusList() {
         $data = [
             'courage' => $this->courage,
-            'inteligence' => $this->inteligence,
             'friendship' => $this->friendship,
             'sociability' => $this->sociability,
             'kindness' => $this->kindness,

@@ -17,7 +17,11 @@ Route::post('/user/login/token/{token}','App\Http\Controllers\UsersController@lo
 Route::middleware([CheckApiToken::class])->group(function () {
 
     Route::get('/user/get-by-token',        'App\Http\Controllers\UsersController@getUserByApiToken');
+    Route::post('/user/change-password',    'App\Http\Controllers\UsersController@changePassword');
+    Route::post('/user/update',             'App\Http\Controllers\UsersController@updateUser');
 
-
-    Route::get('/user/missions',            'App\Http\Controllers\MissionController@getUserActiveMissions');
+    Route::get(   '/user/missions',                         'App\Http\Controllers\MissionController@getUserActiveMissions');
+    Route::get(   '/user/missions/all',                     'App\Http\Controllers\MissionController@getAllUserMissions');
+    Route::post(  '/user/missions/{playermission}/complete','App\Http\Controllers\MissionController@completeMission');
+    Route::delete('/user/missions/{playermission}/abandon', 'App\Http\Controllers\MissionController@cancelMission');
 });
