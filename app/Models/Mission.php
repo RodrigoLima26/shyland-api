@@ -4,9 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Mission extends Model {
+
     use HasFactory;
+    use SoftDeletes;
+
+    /**
+     * @param $data
+     */
+    public function store($data) {
+
+        $this->title = $data['title'];
+        $this->description = $data['description'];
+        $this->confidence = $data['confidence'];
+        $this->rank = $data['rank'];
+        $this->status = $data['status'];
+        $this->exp_status = $data['exp_status'];
+
+        $this->save();
+
+    }
 
     public function scopeGetPlayerMission($query, Status $status) {
 

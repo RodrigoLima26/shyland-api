@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMissionsTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateMissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('missions', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('player_id')->unsigned();
+            $table->integer('sender_id')->nullable()->unsigned();
+            $table->string('message', 150);
             $table->string('title', 15);
-            $table->string('description', 150);
-            $table->integer('confidence')->default(1);
-            $table->string('rank', 3)->default('E');
+            $table->boolean('friend_request')->nullable();
+            $table->boolean('read')->default(false);
             $table->timestamps();
-            $table->softdeletes();
         });
     }
 
@@ -31,6 +32,6 @@ class CreateMissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('missions');
+        Schema::dropIfExists('notifications');
     }
 }

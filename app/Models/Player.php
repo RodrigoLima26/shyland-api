@@ -24,9 +24,9 @@ class Player extends BaseModel {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function bags() {
+    public function notifications() {
 
-        return $this->hasMany(Bag::class);
+        return $this->hasMany(Notification::class, 'player_id', 'id');
     }
 
     /**
@@ -42,7 +42,7 @@ class Player extends BaseModel {
      */
     public function user() {
 
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'id_player', 'id');
     }
 
     /**

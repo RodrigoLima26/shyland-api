@@ -16,7 +16,7 @@ class AlterUsersTableAddProfilePic extends Migration
 
         Schema::table('users', function (Blueprint $table) {
 
-            $table->string('profile_pic')->nullable();
+            $table->longText('profile_pic')->nullable();
 
         });
 
