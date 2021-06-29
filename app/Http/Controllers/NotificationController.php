@@ -136,7 +136,7 @@ class NotificationController extends Controller {
      */
     public function getAdminNotifications(Request $request) {
         $notifications = Notification::whereNull('player_id')->
-                                       orWhere('complaint_request', 1)->
+                                       orWhereNotNull('complaint_request')->
                                        with(['sender', 'sender.user', 'player', 'player.user'])->
                                        orderBy('created_at', 'desc')->
                                        orderBy('read', 'asc')->

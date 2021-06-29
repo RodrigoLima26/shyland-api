@@ -15,8 +15,8 @@ class AlterMissionsTableAddStatusExp extends Migration
     {
         Schema::table('missions', function (Blueprint $table) {
 
-            $table->string('status')->nullable();
-            $table->integer('exp_status')->default(1)->nullable();
+            $table->string('status', 20);
+            $table->integer('exp_status')->default(1);
 
         });
     }

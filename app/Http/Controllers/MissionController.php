@@ -102,6 +102,31 @@ class MissionController extends Controller {
             return response(['message' => 'Usuário não encontrado'], 404);
     }
 
+    public function cancelAutomatedMission(Request $request) {
+
+        $user = User::where('api_token', $request->api_token)->first();
+
+        if($user) {
+
+            $playermission = PlayerMission::where('id_player', $user->player->id)->
+                                            whereNull('completed_at')->
+                                            orderByRaw("RAND()")->first();
+
+            $playermission->abandon();
+
+            $new_player_mission = new PlayerMission();
+
+            $mission = Mission::getPlayerMission($user->player->status)->orderByRaw("RAND()")->first();
+
+            $new_player_mission->store(['id_mission' => $mission->id, 'id_player' => $user->player->id]);
+
+            return response($new_player_mission->load(['mission']));
+        }
+        else
+            return response(['message' => 'Usuário não encontrado'], 404);
+
+    }
+
     /**
      * @param PlayerMission $playermission
      * @param Request $request

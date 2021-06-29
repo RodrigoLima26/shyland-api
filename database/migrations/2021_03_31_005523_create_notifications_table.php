@@ -18,7 +18,7 @@ class CreateNotificationsTable extends Migration
             $table->integer('player_id')->unsigned();
             $table->integer('sender_id')->nullable()->unsigned();
             $table->string('message', 150);
-            $table->string('title', 15);
+            $table->string('title', 30);
             $table->boolean('friend_request')->nullable();
             $table->boolean('read')->default(false);
             $table->timestamps();

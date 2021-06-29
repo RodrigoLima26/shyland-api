@@ -68,6 +68,9 @@ class Notification extends BaseModel {
         $this->save();
     }
 
+    /**
+     *
+     */
     public function read() {
         $this->read = 1;
         $this->save();

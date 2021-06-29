@@ -75,5 +75,6 @@ Route::middleware([CheckApiToken::class])->group(function () {
 
     //Automated Tests
     Route::post(  '/user/automated/missions/complete','App\Http\Controllers\MissionController@completeAutomatedMission');
+    Route::delete(  '/user/automated/missions/cancel',  'App\Http\Controllers\MissionController@cancelAutomatedMission');
 
 });

@@ -79,7 +79,7 @@ class MissionsSeeder extends Seeder
                 "exp_status" => 1
             ],
             [
-                "title" => 'Faça um Amigo Novo',
+                "title" => 'Faça um Amigo',
                 "description" => 'Faça um novo amigo utilizando a plataforma shyland',
                 "confidence" => 25,
                 "gold" => 50,
@@ -88,7 +88,7 @@ class MissionsSeeder extends Seeder
                 "exp_status" => 1
             ],
             [
-                "title" => 'Leia Alguma Notícia',
+                "title" => 'Leia Notícias',
                 "description" => 'Utilize algum portal de notícias ou algum jornal impresso de sua preferência e leia alguma notícia',
                 "confidence" => 25,
                 "gold" => 50,
@@ -97,7 +97,7 @@ class MissionsSeeder extends Seeder
                 "exp_status" => 1
             ],
             [
-                "title" => 'Faça uma boa Ação',
+                "title" => 'Faça Boa Ação',
                 "description" => 'Faça uma boa ação para alguém que esteja precisando',
                 "confidence" => 25,
                 "gold" => 50,
